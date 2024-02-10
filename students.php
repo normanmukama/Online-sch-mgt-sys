@@ -43,19 +43,10 @@ session_start();
                     $stmt = mysqli_query($conn, "SELECT * FROM student_info");
                     if (mysqli_num_rows($stmt)) {
                     ?>
-                    <h4>session</h4>
-                    <?php
-        if(isset($_SESSION['message']))
-        { ?>
-            <div class="alert alert-warning alert-dismissible fade show" role="alert">
-  <strong>Alert</strong> <?php echo  $_SESSION['message']; ?>
-  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-</div>
-       <?php
-            //unset session
-            unset($_SESSION['message']);
-        }
-        ?>
+             
+                    <p type="button" class="float-center btn text-light justify-content-right" data-toggle="modal" data-target="#exampleModal" style="background-color: #0f172a; ">
+                    Add student
+                    </p>
                         <table id="studentTable" class="table table-striped table-bordered" style="width:100%">
                             <thead class="" style="background-color: whitesmoke;">
                                 <tr>
@@ -97,6 +88,80 @@ session_start();
                     ?>
                 </div>
             </div>
+        </div>
+    </div>
+
+    //modal
+    <!-- Button trigger modal -->
+
+     <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                
+            <form action="student.php" method="POST" enctype="multipart/form-data">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-container">
+                            <div class="form-group">
+                                <label for="firstName">First Name</label>
+                                <input type="text" name="firstname" class="form-control" id="firstName" placeholder="Enter first name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="lastName">Last Name</label>
+                                <input type="text" name="lastname" class="form-control" id="lastName" placeholder="Enter last name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="age">Age</label>
+                                <input type="number" name="age" class="form-control" id="age" placeholder="Enter age" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="regNumber">Registration Number</label>
+                                <input type="text" name="regno" class="form-control" id="regNumber" placeholder="Enter registration number" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="regNumber">Gender</label>
+                                <input type="text" name="gender" class="form-control" id="regNumber" placeholder="Enter registration number" required>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-container">
+                            <div class="form-group">
+                            <label for="parentName">Parent's Name</label>
+                            <input type="text" name="pname" class="form-control" id="parentName" placeholder="Enter parent's name" required>
+                            </div>
+                            <div class="form-group">
+                            <label for="contact">Contact Number</label>
+                            <input type="text" name="contact" class="form-control" id="contact" placeholder="Enter contact number" required>
+                            </div>
+                            <div class="form-group">
+                            <label for="location">Location</label>
+                            <input type="text" name="location" class="form-control" id="location" placeholder="Enter location" required>
+                            </div>
+                            <div class="form-group">
+                            <label for="aggregates">Aggregates</label>
+                            <input type="text" name="aggregates" class="form-control" id="aggregates" placeholder="Enter aggregates" required>
+                            </div>
+                            <div class="form-group">
+                            <label for="formFile" class="form-label">Profile image</label>
+                            <input class="form-control" name="image" type="file" id="formFile" required>
+                            </div>
+                            <div class="">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <button type="submit" class="btn btn-primary" name="submit">Submit</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
         </div>
     </div>
 
